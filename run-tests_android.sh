@@ -2,7 +2,7 @@
 
 echo "Installing dependencies"
 chmod 0755 requirements.txt
-python3 -m pip3 install -r requirements.txt
+python3 -m pip install -r requirements.txt
 
 echo "Starting Appium ..."
 appium --log-no-colors --log-timestamp  --command-timeout 60  > appium.log 2>&1 &

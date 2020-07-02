@@ -1,8 +1,8 @@
-selenium==3.141
+selenium
 pytest
-pytest-selenium==1.16.0
+pytest-selenium
 virtualenv
-Appium-Python-Client==0.44
-altunityrunner==1.5.4
-assertpy==0.14
+Appium-Python-Client
+altunityrunner==1.5.5
+assertpy
 pytest-html
