@@ -1,0 +1,8 @@
+selenium==3.141
+pytest
+pytest-selenium==1.16.0
+virtualenv
+Appium-Python-Client==0.44
+altunityrunner==1.5.4
+assertpy==0.14
+pytest-html
