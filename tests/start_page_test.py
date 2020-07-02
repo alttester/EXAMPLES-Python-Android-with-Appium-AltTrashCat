@@ -6,7 +6,6 @@ class TestStartPage(TestBase):
     def setUp(self):
         self.start_page = StartPage(self.altdriver, self.appium_driver)
         self.start_page.load()
-        # self.main_menu_page = MainMenuPage(self.altdriver, self.appium_driver)
 
     def test_start_page_loaded_correctly_after_background(self):
         print("Running the app in background with Appium")
