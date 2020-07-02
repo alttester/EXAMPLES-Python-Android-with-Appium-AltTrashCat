@@ -29,6 +29,7 @@ class TestBase(unittest.TestCase):
         cls.appium_driver = webdriver.Remote('http://localhost:4723/wd/hub', cls.desired_caps)
         print("Appium driver started")
         cls.setup_port_forwarding()
+        time.sleep(10)
         cls.altdriver = AltrunUnityDriver(cls.appium_driver, cls.platform)
 
     @classmethod
