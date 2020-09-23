@@ -9,7 +9,7 @@ python3 -m pip install -r requirements.txt
 # Preparing to start Appium
 # - UDID is the device ID on which test will run and
 #   required parameter on iOS test runs
-# - appium - is a wrapper tha calls the latest installed
+# - appium - is a wrapper that calls the latest installed
 #   Appium server. Additional parameters can be passed
 #   to the server here.
 #
