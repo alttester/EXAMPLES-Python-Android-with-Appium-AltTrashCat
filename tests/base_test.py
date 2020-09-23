@@ -4,7 +4,7 @@ import time
 
 sys.path.append(os.path.dirname(__file__))
 
-from altunityrunner import AltrunUnityDriver
+from altunityrunner import AltUnityDriver
 import unittest
 import pytest
 import os
@@ -30,7 +30,7 @@ class TestBase(unittest.TestCase):
         print("Appium driver started")
         cls.setup_port_forwarding()
         time.sleep(10)
-        cls.altdriver = AltrunUnityDriver(cls.appium_driver, cls.platform)
+        cls.altdriver = AltUnityDriver()
 
     @classmethod
     def setup_port_forwarding(cls):
@@ -45,10 +45,10 @@ class TestBase(unittest.TestCase):
 
         if cls.platform == 'android':
             AltUnityAndroidPortForwarding().forward_port_device()
-            print("Port forwared (Android).")
+            print("Port forwarded (Android).")
         else:
             AltUnityiOSPortForwarding().forward_port_device()
-            print("Port forwared (iOS).")
+            print("Port forwarded (iOS).")
 
     @classmethod
     def tearDownClass(cls):

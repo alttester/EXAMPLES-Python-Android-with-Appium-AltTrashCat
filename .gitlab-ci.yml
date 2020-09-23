@@ -1,0 +1,30 @@
+stages:
+  - test
+
+run-python-appium-android-tests:
+  stage: test
+  rules:
+    - when: always
+  tags:
+    - android
+  script:
+    - sh run-tests_android.sh
+  artifacts:
+    when: always
+    expire_in: 10 days
+    paths:
+      - appium.log
+
+run-python-appium-ios-tests:
+  stage: test
+  rules:
+    - when: always
+  tags:
+    - mac
+  script:
+    - sh run-tests_ios.sh
+  artifacts:
+    when: always
+    expire_in: 10 days
+    paths:
+      - appium.log
