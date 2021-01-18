@@ -1,6 +1,5 @@
 from pages.main_page import MainPage
 from tests.base_test import TestBase
-from pages.game_page import GamePage
 
 
 class TestMainPage(TestBase):

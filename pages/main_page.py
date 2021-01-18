@@ -34,7 +34,7 @@ class MainPage(BasePage):
     def start_game(self):
         print("StartButton tapping")
 
-        sleep(5)
+        sleep(10)
         self.start_button.tap()
         sleep(5)
 
