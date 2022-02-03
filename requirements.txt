@@ -3,6 +3,6 @@ pytest
 pytest-selenium
 virtualenv
 Appium-Python-Client
-altunityrunner==1.6.1
+altunityrunner==1.7.0
 assertpy
 pytest-html
