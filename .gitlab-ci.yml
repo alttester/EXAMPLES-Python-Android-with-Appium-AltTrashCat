@@ -22,7 +22,7 @@ run-python-appium-ios-tests:
   tags:
     - mac
   script:
-    - sh run-tests_ios.sh
+    - sh run-tests-ios.sh
   artifacts:
     when: always
     expire_in: 10 days
