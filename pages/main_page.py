@@ -13,7 +13,7 @@ class MainPage(BasePage):
 
     @property
     def start_button(self):
-        return self.altdriver.find_object(By.NAME, 'StartButton')
+        return self.altdriver.wait_for_object(By.NAME, 'UICamera/Loadout/StartButton', timeout=2)
 
     @property
     def store_button(self):
@@ -39,8 +39,7 @@ class MainPage(BasePage):
         sleep(5)
 
     def close_ad(self):
-        el = self.appium_driver.find_element_by_xpath(
-            '/ hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[1]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View')
+        el = self.appium_driver.find_element('/ hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[1]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View')
         actions = TouchAction(self.appium_driver)
         actions.tap(el)
         actions.perform()

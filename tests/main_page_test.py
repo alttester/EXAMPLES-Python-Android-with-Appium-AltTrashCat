@@ -8,7 +8,6 @@ class TestMainPage(TestBase):
         self.main_page = MainPage(self.altdriver, self.appium_driver)
         self.main_page.load()
 
-    def test_close_ad(self):
+    def test_game_start(self):
         self.main_page.start_game()
-        self.main_page.close_ad()
         assert(self.main_page.is_displayed())
