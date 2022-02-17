@@ -11,5 +11,6 @@ class TestGamePlayPage(TestBase):
         self.main_page.load()
 
     def test_avoiding_obstacles(self):
+        self.main_page.start_game()
         self.game_play_page.avoid_obstacles(5)
         assert self.game_play_page.get_current_life() > 0

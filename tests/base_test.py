@@ -34,7 +34,7 @@ class TestBase(unittest.TestCase):
     def setup_android(cls):
         cls.desired_caps['platformName'] = os.getenv('APPIUM_PLATFORM', 'Android')
         cls.desired_caps['deviceName'] = os.getenv('APPIUM_DEVICE', 'device')
-        cls.desired_caps['app'] = os.getenv("APPIUM_APPFILE", "TrahCat.apk")
+        cls.desired_caps['app'] = os.getenv("APPIUM_APPFILE", "TrashCat.apk")
         cls.desired_caps['automationName'] = os.getenv('APPIUM_AUTOMATION', 'UIAutomator2')
 
     @classmethod

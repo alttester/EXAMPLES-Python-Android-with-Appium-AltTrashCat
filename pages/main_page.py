@@ -13,7 +13,7 @@ class MainPage(BasePage):
 
     @property
     def start_button(self):
-        return self.altdriver.wait_for_object(By.NAME, 'UICamera/Loadout/StartButton', timeout=2)
+        return self.altdriver.wait_for_object(By.NAME, 'UICamera/Loadout/StartButton', timeout=6)
 
     @property
     def store_button(self):
@@ -34,9 +34,9 @@ class MainPage(BasePage):
     def start_game(self):
         print("StartButton tapping")
 
-        sleep(10)
+        # sleep(10)
         self.start_button.tap()
-        sleep(5)
+        # sleep(5)
 
     def close_ad(self):
         el = self.appium_driver.find_element('/ hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[1]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View')

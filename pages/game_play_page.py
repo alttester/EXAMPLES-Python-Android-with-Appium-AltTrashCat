@@ -14,7 +14,7 @@ class GamePlayPage(BasePage):
 
     @property
     def character(self):
-        return self.altdriver.wait_for_object(By.NAME, 'PlayerPivot', timeout=2)
+        return self.altdriver.wait_for_object(By.NAME, 'PlayerPivot')
 
     @property
     def obstacles(self):
