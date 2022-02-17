@@ -23,6 +23,7 @@ class TestBase(unittest.TestCase):
             cls.setup_android()
         else:
             cls.platform = 'ios'
+            cls.setup_ios()
         print("Running on " + cls.platform)
         cls.appium_driver = webdriver.Remote('http://localhost:4723/wd/hub', cls.desired_caps)
         print("Appium driver started")
@@ -36,6 +37,13 @@ class TestBase(unittest.TestCase):
         cls.desired_caps['deviceName'] = os.getenv('APPIUM_DEVICE', 'device')
         cls.desired_caps['app'] = os.getenv("APPIUM_APPFILE", "TrashCat.apk")
         cls.desired_caps['automationName'] = os.getenv('APPIUM_AUTOMATION', 'UIAutomator2')
+
+    @classmethod
+    def setup_ios(cls):
+        cls.desired_caps['platformName'] = os.getenv('APPIUM_PLATFORM', 'IOS')
+        cls.desired_caps['deviceName'] = os.getenv('APPIUM_DEVICE', 'device')
+        cls.desired_caps['app'] = os.getenv("APPIUM_APPFILE", "TrashCat.ipa")
+        cls.desired_caps['automationName'] = os.getenv('APPIUM_AUTOMATION', 'XCUITest')
 
     @classmethod
     def setup_port_forwarding(cls):
