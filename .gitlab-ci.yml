@@ -1,6 +1,6 @@
 stages:
   - test
-
+  
 run-python-appium-android-tests:
   stage: test
   rules:
