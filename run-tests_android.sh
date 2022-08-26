@@ -2,6 +2,7 @@
 
 echo "Installing dependencies"
 chmod 0755 requirements.txt
+npm install -g appium
 python -m pip install -r requirements.txt
 
 echo "Starting Appium ..."
