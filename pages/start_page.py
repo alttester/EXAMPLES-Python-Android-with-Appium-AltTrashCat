@@ -1,5 +1,5 @@
 from pages.base_page import BasePage
-from altunityrunner import By
+from alttester import By
 
 
 class StartPage(BasePage):

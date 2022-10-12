@@ -4,12 +4,11 @@ import time
 
 sys.path.append(os.path.dirname(__file__))
 
-from altunityrunner import AltUnityDriver
+from alttester import AltDriver, AltPortForwarding
 import unittest
 import pytest
 import os
 from appium import webdriver
-from altunityrunner import AltUnityAndroidPortForwarding, AltUnityiOSPortForwarding
 
 class TestBase(unittest.TestCase):
     platform = None
@@ -30,24 +29,24 @@ class TestBase(unittest.TestCase):
         print("Appium driver started")
         cls.setup_port_forwarding()
         time.sleep(10)
-        cls.altdriver = AltUnityDriver()
+        cls.altdriver = AltDriver()
 
     @classmethod
     def setup_port_forwarding(cls):
         try:
-            AltUnityAndroidPortForwarding().remove_forward_port_device()
+            AltPortForwarding.remove_all_forward_android()
         except:
             print("No adb forward was present")
         try:
-            AltUnityiOSPortForwarding.kill_all_iproxy_process()
+            AltPortForwarding.kill_all_iproxy_process()
         except:
             print("No iproxy forward was present")
 
         if cls.platform == 'android':
-            AltUnityAndroidPortForwarding().forward_port_device()
+            AltPortForwarding.forward_android()
             print("Port forwarded (Android).")
         else:
-            AltUnityiOSPortForwarding().forward_port_device()
+            AltPortForwarding.forward_ios()
             print("Port forwarded (iOS).")
 
     @classmethod
