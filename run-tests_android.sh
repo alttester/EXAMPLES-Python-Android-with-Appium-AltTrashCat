@@ -24,3 +24,6 @@ rm -rf screenshots
 python3 -m pytest tests/ -s
 
 echo "Tests done"
+
+
+sleep 200
