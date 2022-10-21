@@ -1,14 +1,13 @@
 import os
 import sys
 import time
+import unittest
+
+from alttester import AltDriver, AltPortForwarding
+from appium import webdriver
 
 sys.path.append(os.path.dirname(__file__))
 
-from alttester import AltDriver, AltPortForwarding
-import unittest
-import pytest
-import os
-from appium import webdriver
 
 class TestBase(unittest.TestCase):
     platform = None
@@ -51,7 +50,6 @@ class TestBase(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        print("Ending")
+        print("\nEnding")
         cls.altdriver.stop()
         cls.appium_driver.quit()
-
