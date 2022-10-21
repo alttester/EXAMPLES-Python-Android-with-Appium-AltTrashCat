@@ -33,7 +33,7 @@ class TestGamePlay(TestBase):
 
     def test_avoiding_obstacles(self):
         self.game_play_page.avoid_obstacles(5)
-        assert self.game_play_page.get_current_life() >= 0
+        assert self.game_play_page.get_current_life() > 0
 
     def test_player_dies_when_obstacles_not_avoided(self):
         timeout = 10

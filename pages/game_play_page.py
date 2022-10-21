@@ -27,22 +27,22 @@ class GamePlayPage(BasePage):
         self.pause_button.tap()
 
     def get_current_life(self):
-        return int(self.character.call_component_method('CharacterInputController', 'get_currentLife', assembly=''))
+        return int(self.character.call_component_method('CharacterInputController', 'get_currentLife', ''))
 
     def jump(self):
-        self.character.call_component_method('CharacterInputController', 'Jump', assembly='')
+        self.character.call_component_method('CharacterInputController', 'Jump', '')
 
     def move_right(self):
-        self.character.call_component_method('CharacterInputController', 'ChangeLane', parameters=['1'])
+        self.character.call_component_method('CharacterInputController', 'ChangeLane', '', parameters=['1'])
 
     def move_left(self):
-        self.character.call_component_method('CharacterInputController', 'ChangeLane', parameters=['-1'])
+        self.character.call_component_method('CharacterInputController', 'ChangeLane', '', parameters=['-1'])
 
     def avoid_obstacles(self, number_of_obstacles=10, invincible=False):
         character = self.character
 
         if invincible:
-            character.call_component_method('CharacterInputController', 'CheatInvincible', parameters=['true'])
+            character.call_component_method('CharacterInputController', 'CheatInvincible', '', parameters=['true'])
 
         moved_left = False
         moved_right = False
