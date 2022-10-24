@@ -1,2 +1,2 @@
 Info about the required setup and how to run these tests can be found here:
-https://altom.gitlab.io/altunity/altunitytester/pages/tester-with-appium.html#
+https://altom.com/alttester/docs/sdk/pages/alttester-with-appium.html

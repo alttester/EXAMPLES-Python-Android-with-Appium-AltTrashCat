@@ -1,8 +1,3 @@
-selenium
 pytest
-pytest-selenium
-virtualenv
 Appium-Python-Client
 AltTester-Driver==1.8.0
-assertpy
-pytest-html
