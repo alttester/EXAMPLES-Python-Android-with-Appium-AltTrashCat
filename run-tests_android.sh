@@ -9,7 +9,7 @@ appium --log-no-colors --log-timestamp  --command-timeout 60  > appium.log 2>&1 
 sleep 10
 ps -ef|grep appium
 
-export APPIUM_APPFILE=$PWD/application.apk #App file is at current working folder
+export APPIUM_APPFILE=$PWD/TrashCat.apk #App file is at current working folder
 
 ## Desired capabilities:
 export APPIUM_URL="http://localhost:4723/wd/hub"
@@ -24,6 +24,3 @@ rm -rf screenshots
 python3 -m pytest tests/ -s
 
 echo "Tests done"
-
-
-sleep 200
