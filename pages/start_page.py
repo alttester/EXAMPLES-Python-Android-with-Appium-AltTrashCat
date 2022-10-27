@@ -1,10 +1,11 @@
+from alttester import By
+
 from pages.base_page import BasePage
-from altunityrunner import By
 
 
 class StartPage(BasePage):
     def __init__(self, altdriver, appium_driver):
-        BasePage.__init__(self, altdriver, appium_driver)
+        super().__init__(altdriver, appium_driver)
 
     def load(self):
         self.altdriver.load_scene('Start')
@@ -26,8 +27,13 @@ class StartPage(BasePage):
         return self.altdriver.find_object(By.NAME, 'UnityURLButton')
 
     def is_displayed(self):
-        if self.start_button and self.start_text and self.logo_image and self.unity_url_button:
-            return True
+        return self.start_button \
+            and self.start_text \
+            and self.logo_image \
+            and self.unity_url_button
 
-    def put_app_in_background(self, background_time):
-        self.appium_driver.background_app(background_time)
+    def press_start(self):
+        self.start_button.tap()
+
+    def get_start_button_text(self):
+        return self.start_text.get_text()

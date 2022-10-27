@@ -1,5 +1,4 @@
 .venv/
-appium.log
-AltUnityTesterLog.txt
+*.log
 **/__pycache__/**
 .vscode/
