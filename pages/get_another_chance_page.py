@@ -10,15 +10,15 @@ class GetAnotherChancePage(BasePage):
 
     @property
     def game_over_button(self):
-        return self.altdriver.wait_for_object(By.NAME, 'Game/DeathPopup/GameOver', timeout=2)
+        return self.altdriver.wait_for_object(By.NAME, 'GameOver', timeout=2)
 
     @property
     def premium_button(self):
-        return self.altdriver.wait_for_object(By.NAME, 'Game/DeathPopup/ButtonLayout/Premium Button', timeout=2)
+        return self.altdriver.wait_for_object(By.NAME, 'Premium Button', timeout=2)
 
     @property
     def available_currency(self):
-        return int(self.altdriver.wait_for_object(By.NAME, 'Game/DeathPopup/PremiumDisplay/PremiumOwnCount', timeout=2).get_text())
+        return int(self.altdriver.wait_for_object(By.NAME, 'PremiumOwnCount', timeout=2).get_text())
 
     def is_displayed(self):
         return self.game_over_button and self.premium_button

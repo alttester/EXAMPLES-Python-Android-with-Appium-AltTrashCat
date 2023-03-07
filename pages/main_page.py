@@ -14,27 +14,27 @@ class MainPage(BasePage):
 
     @property
     def store_button(self):
-        return self.altdriver.wait_for_object(By.NAME, 'UICamera/Loadout/StoreButton', timeout=2)
+        return self.altdriver.wait_for_object(By.NAME, 'StoreButton', timeout=2)
 
     @property
     def leader_board_button(self):
-        return self.altdriver.wait_for_object(By.NAME, 'UICamera/Loadout/OpenLeaderboard', timeout=2)
+        return self.altdriver.wait_for_object(By.NAME, 'OpenLeaderboard', timeout=2)
 
     @property
     def settings_button(self):
-        return self.altdriver.wait_for_object(By.NAME, 'UICamera/Loadout/SettingButton', timeout=2)
+        return self.altdriver.wait_for_object(By.NAME, 'SettingButton', timeout=2)
 
     @property
     def mission_button(self):
-        return self.altdriver.wait_for_object(By.NAME, 'UICamera/Loadout/MissionButton', timeout=2)
+        return self.altdriver.wait_for_object(By.NAME, 'MissionButton', timeout=2)
 
     @property
     def run_button(self):
-        return self.altdriver.wait_for_object(By.NAME, 'UICamera/Loadout/StartButton', timeout=2)
+        return self.altdriver.wait_for_object(By.NAME, 'StartButton', timeout=2)
 
     @property
     def run_button_text(self):
-        return self.altdriver.wait_for_object(By.NAME, 'UICamera/Loadout/StartButton/Text', timeout=2)
+        return self.altdriver.wait_for_object(By.PATH, '//UICamera/Loadout/StartButton/Text', timeout=2)
 
     @property
     def character_name(self):
@@ -42,7 +42,7 @@ class MainPage(BasePage):
 
     @property
     def theme_name(self):
-        return self.altdriver.wait_for_object(By.NAME, 'UICamera/Loadout/ThemeZone', timeout=2)
+        return self.altdriver.wait_for_object(By.NAME, 'ThemeZone', timeout=2)
 
     def is_displayed(self):
         return self.store_button \
