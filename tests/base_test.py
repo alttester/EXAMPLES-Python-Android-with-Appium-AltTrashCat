@@ -3,7 +3,7 @@ import sys
 import time
 import unittest
 
-from alttester import AltDriver, AltPortForwarding
+from alttester import AltDriver, AltReversePortForwarding
 from appium import webdriver
 
 sys.path.append(os.path.dirname(__file__))
@@ -33,23 +33,21 @@ class TestBase(unittest.TestCase):
     @classmethod
     def setup_port_forwarding(cls):
         try:
-            AltPortForwarding.remove_all_forward_android()
+            AltReversePortForwarding.RemoveReversePortForwardingAndroid
         except:
             print("No adb forward was present")
-        try:
-            AltPortForwarding.kill_all_iproxy_process()
-        except:
-            print("No iproxy forward was present")
-
         if cls.platform == 'android':
-            AltPortForwarding.forward_android()
+            AltReversePortForwarding.ReversePortForwardingAndroid();
             print("Port forwarded (Android).")
         else:
-            AltPortForwarding.forward_ios()
-            print("Port forwarded (iOS).")
+            print("Reverse port forwarding is available only for Android")
 
     @classmethod
     def tearDownClass(cls):
         print("\nEnding")
+        try:
+            AltReversePortForwarding.RemoveReversePortForwardingAndroid
+        except:
+            print("No adb forward was present")
         cls.altdriver.stop()
         cls.appium_driver.quit()
