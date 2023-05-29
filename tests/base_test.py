@@ -33,11 +33,11 @@ class TestBase(unittest.TestCase):
     @classmethod
     def setup_port_forwarding(cls):
         try:
-            AltReversePortForwarding.RemoveReversePortForwardingAndroid
+            AltReversePortForwarding.remove_reverse_port_forwarding_android()
         except:
             print("No adb forward was present")
         if cls.platform == 'android':
-            AltReversePortForwarding.ReversePortForwardingAndroid();
+            AltReversePortForwarding.reverse_port_forwarding_android()
             print("Port forwarded (Android).")
         else:
             print("Reverse port forwarding is available only for Android")
@@ -46,7 +46,7 @@ class TestBase(unittest.TestCase):
     def tearDownClass(cls):
         print("\nEnding")
         try:
-            AltReversePortForwarding.RemoveReversePortForwardingAndroid
+            AltReversePortForwarding.remove_reverse_port_forwarding_android()
         except:
             print("No adb forward was present")
         cls.altdriver.stop()
