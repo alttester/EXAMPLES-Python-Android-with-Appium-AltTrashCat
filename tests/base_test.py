@@ -26,12 +26,12 @@ class TestBase(unittest.TestCase):
         cls.desired_caps['automationName'] = os.getenv('APPIUM_AUTOMATION', 'UIAutomator2')
         cls.appium_driver = webdriver.Remote('http://localhost:4723/wd/hub', cls.desired_caps)
         print("Appium driver started")
-        cls.setup_port_forwarding()
+        cls.setup_reverse_port_forwarding()
         time.sleep(10)
         cls.altdriver = AltDriver()
 
     @classmethod
-    def setup_port_forwarding(cls):
+    def setup_reverse_port_forwarding(cls):
         try:
             AltReversePortForwarding.remove_reverse_port_forwarding_android()
         except:
@@ -47,6 +47,7 @@ class TestBase(unittest.TestCase):
         print("\nEnding")
         try:
             AltReversePortForwarding.remove_reverse_port_forwarding_android()
+            print("Reverse port forwarding removed")
         except:
             print("No adb forward was present")
         cls.altdriver.stop()
