@@ -4,7 +4,7 @@ https://alttester.com/docs/sdk/latest/pages/alttester-with-appium.html
 ### Running the tests on Android
 **Prerequisite**:
 
-❗ Starting with version 2.0.0, the AltTester Desktop must be running on your PC while the tests are running. You can take it form https://alttester.com/alttester/#pricing.
+❗ Starting with version 2.0.0, the AltTester Desktop must be running on your PC while the tests are running. You can take it from https://alttester.com/alttester/#pricing.
 
 **How to run the tests:**
 1. Open the AltTester Desktop
