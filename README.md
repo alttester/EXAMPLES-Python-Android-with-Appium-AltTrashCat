@@ -8,5 +8,5 @@ https://alttester.com/docs/sdk/latest/pages/alttester-with-appium.html
 
 **How to run the tests:**
 1. Open the AltTester Desktop
-2. The app is provided at https://alttester.com/app/uploads/AltTester/TrashCat/TrashCatAndroid2_0_1.zip nd needs to be included unzipped under project.
+2. The app is provided at https://alttester.com/app/uploads/AltTester/TrashCat/TrashCatAndroid2_0_1.zip and needs to be included unzipped under project.
 3. `./run-tests_android.sh` command in your terminal
