@@ -3,7 +3,7 @@ import sys
 import time
 import unittest
 
-from alttester import AltDriver, AltPortForwarding
+from alttester import AltDriver, AltReversePortForwarding
 from appium import webdriver
 
 sys.path.append(os.path.dirname(__file__))
@@ -26,30 +26,29 @@ class TestBase(unittest.TestCase):
         cls.desired_caps['automationName'] = os.getenv('APPIUM_AUTOMATION', 'UIAutomator2')
         cls.appium_driver = webdriver.Remote('http://localhost:4723/wd/hub', cls.desired_caps)
         print("Appium driver started")
-        cls.setup_port_forwarding()
+        cls.setup_reverse_port_forwarding()
         time.sleep(10)
         cls.altdriver = AltDriver()
 
     @classmethod
-    def setup_port_forwarding(cls):
+    def setup_reverse_port_forwarding(cls):
         try:
-            AltPortForwarding.remove_all_forward_android()
+            AltReversePortForwarding.remove_reverse_port_forwarding_android()
         except:
             print("No adb forward was present")
-        try:
-            AltPortForwarding.kill_all_iproxy_process()
-        except:
-            print("No iproxy forward was present")
-
         if cls.platform == 'android':
-            AltPortForwarding.forward_android()
+            AltReversePortForwarding.reverse_port_forwarding_android()
             print("Port forwarded (Android).")
         else:
-            AltPortForwarding.forward_ios()
-            print("Port forwarded (iOS).")
+            print("Reverse port forwarding is available only for Android")
 
     @classmethod
     def tearDownClass(cls):
         print("\nEnding")
+        try:
+            AltReversePortForwarding.remove_reverse_port_forwarding_android()
+            print("Reverse port forwarding removed")
+        except:
+            print("No adb forward was present")
         cls.altdriver.stop()
         cls.appium_driver.quit()
