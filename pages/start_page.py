@@ -37,3 +37,7 @@ class StartPage(BasePage):
 
     def get_start_button_text(self):
         return self.start_text.get_text()
+
+    def get_status_with_appium_driver(self):
+        # example method for using appium in code
+        return self.appium_driver.get_status()

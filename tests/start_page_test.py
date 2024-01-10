@@ -16,3 +16,7 @@ class TestStartPage(TestBase):
     def test_start_button_loads_main_menu(self):
         self.start_page.press_start()
         assert self.main_page.is_displayed()
+
+    def test_use_appium_as_example(self):
+        self.start_page.get_status_with_appium_driver()
+        assert self.start_page.is_displayed()
