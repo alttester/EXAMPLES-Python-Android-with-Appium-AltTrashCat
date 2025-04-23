@@ -26,7 +26,7 @@ class TestBase(unittest.TestCase):
         cls.options.automation_name = os.getenv('APPIUM_AUTOMATION', 'UIAutomator2')
         cls.options.set_capability('appium:deviceName', os.getenv('APPIUM_DEVICE', 'device'))
         cls.options.set_capability('appium:app', os.getenv("APPIUM_APPFILE", "application.apk"))
-        cls.appium_driver = webdriver.Remote(os.getenv('APPIUM_URL', 'http://localhost:4723/wd/hub'), options=cls.options)
+        cls.appium_driver = webdriver.Remote(os.getenv('APPIUM_URL', 'http://localhost:4723'), options=cls.options)
         print("Appium driver started")
         cls.setup_reverse_port_forwarding()
         time.sleep(10)
