@@ -18,10 +18,11 @@ export APPIUM_DEVICE="Local Device"
 export APPIUM_PLATFORM="android"
 export APPIUM_AUTOMATION="uiautomator2"
 
+## Remove any previously taken screenshots:
+rm -rf screenshots
+
 ## Run the test:
 echo "Running tests"
-
-rm -rf screenshots
 python -m pytest tests/ -s
 
 echo "Tests done"
