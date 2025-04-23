@@ -1,13 +1,11 @@
 import time
-
 from alttester import By
-
 from pages.base_page import BasePage
 
 
 class MainPage(BasePage):
     def __init__(self, altdriver, appium_driver):
-        super().__init__(altdriver, appium_driver)
+        BasePage.__init__(self, altdriver, appium_driver)
 
     def load(self):
         self.altdriver.load_scene('Main')

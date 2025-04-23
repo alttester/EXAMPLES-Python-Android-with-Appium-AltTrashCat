@@ -1,12 +1,11 @@
 from alttester import By
-
 from pages.base_page import BasePage
 
 
 class GamePlayPage(BasePage):
 
     def __init__(self, altdriver, appium_driver):
-        super().__init__(altdriver, appium_driver)
+        BasePage.__init__(self, altdriver, appium_driver)
 
     @property
     def pause_button(self):

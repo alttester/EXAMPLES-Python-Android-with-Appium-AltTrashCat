@@ -1,12 +1,11 @@
 from alttester import By
-
 from .base_page import BasePage
 
 
 class PauseOverlayPage(BasePage):
 
     def __init__(self, altdriver, appium_driver):
-        super().__init__(altdriver, appium_driver)
+        BasePage.__init__(self, altdriver, appium_driver)
 
     @property
     def resume_button(self):
