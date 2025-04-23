@@ -5,6 +5,7 @@ import unittest
 
 from alttester import AltDriver, AltReversePortForwarding
 from appium import webdriver
+from appium.options.common import AppiumOptions
 
 sys.path.append(os.path.dirname(__file__))
 
@@ -19,12 +20,13 @@ class TestBase(unittest.TestCase):
         else:
             cls.platform = 'ios'
         print("Running on " + cls.platform)
-        cls.desired_caps = {}
-        cls.desired_caps['platformName'] = os.getenv('APPIUM_PLATFORM', 'Android')
-        cls.desired_caps['deviceName'] = os.getenv('APPIUM_DEVICE', 'device')
-        cls.desired_caps['app'] = os.getenv("APPIUM_APPFILE", "application.apk")
-        cls.desired_caps['automationName'] = os.getenv('APPIUM_AUTOMATION', 'UIAutomator2')
-        cls.appium_driver = webdriver.Remote('http://localhost:4723/wd/hub', cls.desired_caps)
+
+        cls.options = AppiumOptions()
+        cls.options.platform_name = os.getenv('APPIUM_PLATFORM', 'Android')
+        cls.options.automation_name = os.getenv('APPIUM_AUTOMATION', 'UIAutomator2')
+        cls.options.set_capability('appium:deviceName', os.getenv('APPIUM_DEVICE', 'device'))
+        cls.options.set_capability('appium:app', os.getenv("APPIUM_APPFILE", "application.apk"))
+        cls.appium_driver = webdriver.Remote(os.getenv('APPIUM_URL', 'http://localhost:4723/wd/hub'), options=cls.options)
         print("Appium driver started")
         cls.setup_reverse_port_forwarding()
         time.sleep(10)

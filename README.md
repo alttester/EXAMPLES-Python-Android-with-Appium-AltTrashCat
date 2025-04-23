@@ -8,5 +8,5 @@ https://alttester.com/docs/sdk/latest/pages/alttester-with-appium.html
 
 **How to run the tests:**
 1. Open the AltTester® Desktop
-2. Instrument the TrashCat application using the latest version of AltTester® Unity SDK - for additional information you can follow [this tutorial](https://alttester.com/walkthrough-tutorial-upgrading-trashcat-to-2-0-x/#Instrument%20TrashCat%20with%20AltTester%20Unity%20SDK%20v.2.0.x). The app needs to be included under the project.
+2. Instrument the TrashCat application using the latest version of AltTester® Unity SDK - for additional information you can follow [this tutorial](https://alttester.com/walkthrough-tutorial-upgrading-trashcat-to-2-0-x/#Instrument%20TrashCat%20with%20AltTester%20Unity%20SDK%20v.2.0.x). The app needs to be included under the app/ folder that you need to create inside the project.
 3. `./run-tests_android.sh` command in your terminal
