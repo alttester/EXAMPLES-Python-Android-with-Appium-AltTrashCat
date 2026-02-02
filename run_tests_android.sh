@@ -1,28 +1,68 @@
 #!/bin/bash
 
+# Detect OS and set Python command
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    PYTHON_CMD="python3"
+else
+    PYTHON_CMD="python"
+fi
+
+# Install dependencies
 echo "Installing dependencies"
 chmod 0755 requirements.txt
-python -m pip install -r requirements.txt
+$PYTHON_CMD -m pip install -r requirements.txt
 
+# Check if Appium uiautomator2 driver is installed
+echo "Checking Appium uiautomator2 driver..."
+if appium driver list --installed 2>&1 | tail -1 | grep -q "uiautomator2"; then
+    echo "uiautomator2 driver already installed"
+else
+    echo "Installing uiautomator2 driver..."
+    appium driver install uiautomator2
+fi
+
+# Stop any existing Appium instances
+echo "Stopping any existing Appium instances..."
+pkill -f appium 2>/dev/null || true
+sleep 2
+
+# Start Appium server
 echo "Starting Appium..."
 appium --log-no-colors --log-timestamp -p 4723 --keep-alive-timeout 60 > appium.log 2>&1 &
-sleep 10
+
+# Wait for Appium to start
+echo "Waiting for Appium to start..."
+MAX_WAIT=30
+COUNTER=0
+while [ $COUNTER -lt $MAX_WAIT ]; do
+    if lsof -i :4723 >/dev/null 2>&1; then
+        echo "Appium started successfully!"
+        break
+    fi
+    echo "Waiting... ($COUNTER/$MAX_WAIT)"
+    sleep 1
+    COUNTER=$((COUNTER + 1))
+done
+
+if [ $COUNTER -eq $MAX_WAIT ]; then
+    echo "Error: Appium failed to start within $MAX_WAIT seconds"
+    exit 1
+fi
+
 ps -ef|grep appium
 
-#App file is under the app/ folder inside the current working folder
+# Set environment variables for the test
 export APPIUM_APPFILE=$PWD/app/TrashCat.apk 
-
-## Appium Options:
 export APPIUM_URL="http://localhost:4723"
 export APPIUM_DEVICE="Local Device"
 export APPIUM_PLATFORM="android"
 export APPIUM_AUTOMATION="uiautomator2"
 
-## Remove any previously taken screenshots:
+# Clean up old screenshots
 rm -rf screenshots
 
-## Run the test:
+# Run tests
 echo "Running tests"
-python -m pytest tests/ -s
+$PYTHON_CMD -m pytest tests/ -s
 
 echo "Tests done"
