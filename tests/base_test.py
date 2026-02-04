@@ -23,6 +23,7 @@ class TestBase(unittest.TestCase):
         appium_automation = os.getenv('APPIUM_AUTOMATION', 'UIAutomator2')
         device_name = os.getenv('APPIUM_DEVICE', 'device')
         app_file = os.getenv('APPIUM_APPFILE', 'app/application.apk')
+        # udid = os.getenv('APPIUM_UDID')
 
         print(f"Starting tests on platform: {platform}, device: {device_name}")
 
@@ -34,6 +35,10 @@ class TestBase(unittest.TestCase):
         cls.options.set_capability('appium:deviceName', device_name)
         cls.options.set_capability('appium:app', app_file)
         cls.options.set_capability('appium:autoGrantPermissions', True)
+
+        # If a UDID is provided, target that device
+        # if udid:
+        #     cls.options.set_capability('appium:udid', udid)
 
         # Uncomment for Android Unreal build, ensure Appium waits for the correct activity
         # if platform == 'android':

@@ -11,6 +11,7 @@ fi
 export APPIUM_APPFILE=$PWD/app/AltTesterUnrealSDK.apk 
 export APPIUM_URL="http://localhost:4723"
 export APPIUM_DEVICE="Local Device"
+# export APPIUM_UDID="[REPLACE_WITH_DEVICE_UDID]"
 export APPIUM_PLATFORM="Android"
 export APPIUM_AUTOMATION="UIAutomator2"
 
