@@ -7,18 +7,36 @@ else
     PYTHON_CMD="python"
 fi
 
+# Set environment variables for the test
+export APPIUM_APPFILE=$PWD/app/AltTesterUnrealSDK.apk 
+export APPIUM_URL="http://localhost:4723"
+export APPIUM_DEVICE="Local Device"
+export APPIUM_PLATFORM="Android"
+export APPIUM_AUTOMATION="UIAutomator2"
+
 # Install dependencies
 echo "Installing dependencies"
 chmod 0755 requirements.txt
 $PYTHON_CMD -m pip install -r requirements.txt
 
-# Check if Appium uiautomator2 driver is installed
-echo "Checking Appium uiautomator2 driver..."
-if appium driver list --installed 2>&1 | tail -1 | grep -q "uiautomator2"; then
-    echo "uiautomator2 driver already installed"
-else
-    echo "Installing uiautomator2 driver..."
-    appium driver install uiautomator2
+# Decide which Appium driver to check/install based on APPIUM_PLATFORM
+platform_lc=$(echo "${APPIUM_PLATFORM:-Android}" | tr '[:upper:]' '[:lower:]')
+if [[ "$platform_lc" == "android" ]]; then
+    echo "Checking Appium UIAutomator2 driver..."
+    if appium driver list --installed 2>&1 | grep -qi "uiautomator2"; then
+        echo "UIAutomator2 driver already installed"
+    else
+        echo "Installing UIAutomator2 driver..."
+        appium driver install uiautomator2
+    fi
+elif [[ "$platform_lc" == "ios" ]]; then
+    echo "Checking Appium XCUITest driver..."
+    if appium driver list --installed 2>&1 | grep -qi "xcuitest"; then
+        echo "XCUITest driver already installed"
+    else
+        echo "Installing XCUITest driver..."
+        appium driver install xcuitest
+    fi
 fi
 
 # Stop any existing Appium instances
@@ -50,13 +68,6 @@ if [ $COUNTER -eq $MAX_WAIT ]; then
 fi
 
 ps -ef|grep appium
-
-# Set environment variables for the test
-export APPIUM_APPFILE=$PWD/app/TrashCat.apk 
-export APPIUM_URL="http://localhost:4723"
-export APPIUM_DEVICE="Local Device"
-export APPIUM_PLATFORM="android"
-export APPIUM_AUTOMATION="uiautomator2"
 
 # Clean up old screenshots
 rm -rf screenshots
